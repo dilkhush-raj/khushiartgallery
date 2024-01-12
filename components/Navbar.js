@@ -17,7 +17,10 @@ export default function Navbar() {
             <button onClick={() => setToggle(!toggle)} className="text-2xl  ">
               {!toggle ? <CgMenuLeft /> : <CgClose />}
             </button>
-            <Link href={"/"} className="text-xl flex items-center gap-2 font-bold">
+            <Link
+              href={"/"}
+              className="text-xl flex items-center gap-2 font-bold"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -60,14 +63,17 @@ export default function Navbar() {
             <div className="bg-white border-t border-[#eee] h-full min-w-[200px] ">
               <div className="flex flex-col justify-between h-full">
                 <nav className="flex flex-col items-bottom gap-1 p-2 text-sm ">
-                  <HomeLink />
+                  <div onClick={() => setToggle(!toggle)}>
+                    <HomeLink />
+                  </div>
                   {navLinks.map((link) => (
-                    <ActiveLink
-                      key={link.route}
-                      href={link.route}
-                      label={link.label}
-                      icon={link?.icon}
-                    />
+                    <div key={link.route} onClick={() => setToggle(!toggle)}>
+                      <ActiveLink
+                        href={link.route}
+                        label={link.label}
+                        icon={link?.icon}
+                      />
+                    </div>
                   ))}
                 </nav>
               </div>
